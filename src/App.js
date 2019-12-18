@@ -4,10 +4,13 @@ import Footer from './layout/Footer';
 import Highscore from './components/Highscore';
 import Register from './components/Register';
 import Profile from './components/Profile';
+import { expect } from "chai";
+import Login from './components/Login';
+import MemoryGame from './games/MemoryGame';
+
 
 
 const App = () => {
-
   let user = {
     user_id: 1,
     name: "Pera",
@@ -38,6 +41,7 @@ const App = () => {
     },
   ]
 
+
   return (
     <>
       <Header logedIn={false} />
@@ -46,7 +50,11 @@ const App = () => {
       <hr />
       <Register />
       <hr />
+      <Login />
+      <hr />
       <Profile user={user}/>
+      <hr />
+      <MemoryGame />
       <hr />
       <Footer />
     </>
