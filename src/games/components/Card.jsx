@@ -17,7 +17,7 @@ const Card = ({ card,onClick,isFlipped }) => {
             RICK
             </FrontSide>
             <BackSide
-            style={{ backgroundColor: '#175852'}}>
+            style={{ backgroundColor: '#175852', fontSize: '100px',textAlign: 'center', lineHeight: '10px'}}>
             {card.data}
             </BackSide>
         </Flippy>

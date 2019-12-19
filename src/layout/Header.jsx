@@ -1,7 +1,8 @@
 import  React  from "react"
 import Logo from "../components/Logo"
+import { Link } from 'react-router-dom'
 
-const Header = ({ logedIn }) => {
+const Header = ({ logedIn, setUser }) => {
 
     if(logedIn){
         return(
@@ -9,7 +10,7 @@ const Header = ({ logedIn }) => {
                 <Logo />
                 <h1>Гејмер</h1>
 
-                <button>Одјави се</button>
+                <button onClick={() => setUser()}>Одјави се</button>
             </header>
         )
     }
@@ -19,8 +20,8 @@ const Header = ({ logedIn }) => {
                 <Logo />
                 <h1>Гејмер</h1>
 
-                <button>Регистрација</button>
-                <button>Пријави се</button>
+                <Link to='/register'><button>Регистрација</button></Link>
+                <Link to='/login'><button>Пријави се</button></Link>
             </header>
         )
     }

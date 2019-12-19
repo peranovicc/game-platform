@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './layout/Header';
 import Footer from './layout/Footer';
 import Highscore from './components/Highscore';
 import Register from './components/Register';
 import Profile from './components/Profile';
-import { expect } from "chai";
 import Login from './components/Login';
 import MemoryGame from './games/MemoryGame';
+
+import { BrowserRouter as Router } from 'react-router-dom'
+import Content from './layout/Content';
+
 
 
 
 const App = () => {
-  let user = {
+  let user2 = {
     user_id: 1,
     name: "Pera",
     surname: "Peric",
@@ -20,43 +23,21 @@ const App = () => {
     picture: null
   }
 
-  let scores = [
-    {
-      score_id: 0,
-      user_id: 0,
-      game: 0,
-      score: 100
-    },
-    {
-      score_id: 1,
-      user_id: 1,
-      game: 0,
-      score: 10
-    },
-    {
-      score_id: 2,
-      user_id: 0,
-      game: 1,
-      score: 80
-    },
-  ]
+
+  const [user,setUser] = useState()
+
+  
+  
+  
 
 
   return (
     <>
-      <Header logedIn={false} />
-      <hr />
-      <Highscore scores={scores}/>
-      <hr />
-      <Register />
-      <hr />
-      <Login />
-      <hr />
-      <Profile user={user}/>
-      <hr />
-      <MemoryGame />
-      <hr />
+    <Router>
+      <Header logedIn={user} setUser={setUser}/>
+      <Content setUser={setUser}/>
       <Footer />
+    </Router>
     </>
   )
 }

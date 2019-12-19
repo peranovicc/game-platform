@@ -1,38 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Card from './components/Card';
+import { getMemoryCards } from '../util/coetus-service';
+
 
 const MemoryGame = () => {
-    const cardsdata = [
-        {
-            id: 0, 
-            data:'nesto1'
-        },
-        {
-            id: 1, 
-            data:'nesto2'
-        },
-        {
-            id: 2, 
-            data:'nesto3'
-        },
-        {
-            id: 3, 
-            data:'nesto4'
-        },
-        {
-            id: 4, 
-            data:'nesto5'
-        }
-    ]
 
-    const copy = [...cardsdata,...cardsdata]
+    const [cards, setCards] = useState([])
+        
+    useEffect(() => getMemoryCards()
+    .then(data => {
+        const copy = [...data.data,...data.data]
+        setCards(shuffleArray(copy))
+    }),[])
+    
 
     function shuffleArray(cards){
         let tmp = [...cards]
         return tmp.sort(() => 0.5 - Math.random())
     }
 
-    const [cards, setCards] = useState(shuffleArray(copy))
     const [selected, setSelected] = useState([])
     const [correct, setCorrect] = useState([])
 
