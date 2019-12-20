@@ -14,7 +14,7 @@ const Content = ({ setUser,user }) => {
             <Route path='/register' component={(props) => <Register setUser={setUser} {...props}/>} />
             <Route path='/login' component={(props) => <Login setUser={setUser} {...props}/>} />
             <Route path='/profile' component={() => <Profile  user={user}/>} />
-            <Route path='/memory-game' component={MemoryGame} />
+            <Route path='/memory-game' component={() => <MemoryGame user={user} />} />
         </Switch>
         </main>
     )

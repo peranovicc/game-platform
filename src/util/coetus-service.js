@@ -2,6 +2,7 @@ const BASEURL = 'https://coetus.herokuapp.com'
 const API = '/api/gamer'
 const MEMORYCARDS = '/memory/cards'
 const USERS = '/users'
+const SCORES = '/scores'
 
 function getMemoryCards(){
     return fetch(`${BASEURL}${API}${MEMORYCARDS}`)
@@ -20,7 +21,7 @@ function login(user){
 }
 
 function register(user){
-    return fetch(`${BASEURL}${API}${USERS}`,{
+    return fetch(`${BASEURL}${API}${SCORES}`,{
         headers:{
             'Content-Type':'application/json; charset=utf-8'
         },
@@ -29,5 +30,37 @@ function register(user){
     }).then(res => res.json())
 }
 
-export {getMemoryCards,login,register}
+function getScores(){
+    return fetch(`${BASEURL}${API}${SCORES}`)
+        .then(res => res.json())
+}
+
+function getUsername(id){
+    return fetch(`${BASEURL}${API}${USERS}/${id}`)
+            .then(res => res.json())
+}
+
+function addScore(score){
+    return fetch(`${BASEURL}${API}${SCORES}`,{
+        headers:{
+            'Content-Type':'application/json; charset=utf-8'
+        },
+        method:'PUT',
+        body:JSON.stringify(score)
+    }).then(res => res.json())
+}
+
+function calculateScore(time){
+    let score = 1000 / time;
+    return score
+}
+
+export {
+    getMemoryCards,
+    login,register,
+    getScores,
+    getUsername,
+    addScore,
+    calculateScore
+}
 
