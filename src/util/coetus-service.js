@@ -19,5 +19,15 @@ function login(user){
     return res
 }
 
-export {getMemoryCards,login}
+function register(user){
+    return fetch(`${BASEURL}${API}${USERS}`,{
+        headers:{
+            'Content-Type':'application/json; charset=utf-8'
+        },
+        method:'PUT',
+        body:JSON.stringify(user)
+    }).then(res => res.json())
+}
+
+export {getMemoryCards,login,register}
 

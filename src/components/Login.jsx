@@ -14,7 +14,7 @@ const Login = ({setUser,history}) => {
                 setUser(data.user)
                 history.push('/memory-game')
             }
-            else console.log('Nije ulogovan')
+            else console.log('Није улогован')
         })
 
 

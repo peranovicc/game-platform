@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { register } from '../util/coetus-service';
 
-const Register = () => {
+const Register = ({setUser,history}) => {
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [username, setUsername] = useState('')
@@ -28,6 +29,21 @@ const Register = () => {
         console.log(pwConfirm === password)
     },[pwConfirm,password])
 
+    function handleSubmit(){
+        if(!validPw || !isSame)
+            return
+        register({name,surname,username,email,password})
+        .then(data =>  {
+            if(data.success) {
+                setUser(data.user)
+                history.push('/memory-game')
+            }
+            else console.log('Неуспешна регистрација')
+        })
+
+
+    }
+
     return (
         <form>
             <input type="text" placeholder="Име" required onInput={e => {
@@ -51,7 +67,7 @@ const Register = () => {
             }} />
                 
 
-            <input type="submit" value="Региструј се" onClick={() => {}} />
+            <input type="submit" value="Региструј се" onClick={e => {e.preventDefault();handleSubmit()}} />
         </form>
     )
 }
