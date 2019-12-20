@@ -10,6 +10,7 @@ const Header = ({ logedIn, setUser }) => {
                 <Logo />
                 <h1>Гејмер</h1>
 
+                <Link to='/profile'><img src='' /></Link>
                 <button onClick={() => setUser()}>Одјави се</button>
             </header>
         )

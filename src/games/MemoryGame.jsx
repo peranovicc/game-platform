@@ -7,11 +7,13 @@ const MemoryGame = () => {
 
     const [cards, setCards] = useState([])
         
-    useEffect(() => getMemoryCards()
+    useEffect(() => {getMemoryCards()
     .then(data => {
         const copy = [...data.data,...data.data]
         setCards(shuffleArray(copy))
-    }),[])
+    })
+    },[])
+
     
 
     function shuffleArray(cards){
