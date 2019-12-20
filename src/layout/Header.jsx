@@ -12,7 +12,7 @@ const Header = ({ logedIn, setUser,history,user }) => {
                     <Link to='/'><Logo /></Link>
                     <hr />
                     <div className='nav-items'>
-                    <Link to='/profile'>{user.username}</Link>
+                    <Link to={`/profile/${user.user_id}`}>{user.username}</Link>
                     <Link to='/'><button className='header-btn' id="logout-btn" onClick={() => setUser()}>Одјави се</button></Link>
                     <Link to='/memory-game'><button className='header-btn'>Игре меморије</button></Link>
                     </div>

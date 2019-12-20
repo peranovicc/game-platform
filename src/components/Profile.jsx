@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUsername } from '../util/coetus-service';
 
-const Profile = ({ user }) => {
+const Profile = ({ match }) => {
+    
+    const [userID] = useState(match.params.user_id)
+    const [user, setUser] = useState({})
+
+    useEffect(() =>{
+        getUsername(userID)
+        .then(data => setUser(data.user))
+    },[userID])
+    
 
     return(
         <>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getUsername } from '../util/coetus-service';
 
-const Score = ({score, userID}) => {
+const Score = ({score, userID, history}) => {
     const [user,setUser] = useState('')
 
     useEffect(() => {
@@ -14,7 +14,9 @@ const Score = ({score, userID}) => {
         })},[userID])
 
     return (
-        <li>{score} {user}</li>
+        <li onClick={() => {
+            history.push(`/profile/${userID}`)
+        }}>{score} {user}</li>
     )
 }
 

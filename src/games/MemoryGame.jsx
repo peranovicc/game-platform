@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Card from './components/Card';
 import { getMemoryCards, addScore, calculateScore } from '../util/coetus-service';
 
-
 const MemoryGame = ({user}) => {
+    
     const [cards, setCards] = useState([])
     const [time,setTime] = useState(0)
     const [selected, setSelected] = useState([])
     const [correct, setCorrect] = useState([])
-
+    
     useEffect(() => {
         let tm = setTimeout(() => {
             setTime(time + 1)
@@ -26,11 +26,10 @@ const MemoryGame = ({user}) => {
     useEffect(() => {
     getMemoryCards()
     .then(data => {
-        const copy = [...data.data.slice(0,3),...data.data.slice(0,3)]
+        const copy = [...data.data,...data.data]
         setCards(shuffleArray(copy))
     })},[])
     
-
     function shuffleArray(cards){
         let tmp = [...cards]
         return tmp.sort(() => 0.5 - Math.random())
@@ -58,6 +57,8 @@ const MemoryGame = ({user}) => {
             }
         }
     }
+
+   
 
     return (
         <div>
